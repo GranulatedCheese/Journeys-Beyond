@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "journeysbeyond:item/active_ruby",
+    "layer1": "journeysbeyond:item/active_ruby_layer"
+  }
+}

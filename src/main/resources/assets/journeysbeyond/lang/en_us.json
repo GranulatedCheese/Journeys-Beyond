@@ -1,0 +1,12 @@
+{
+  "creativetab.journeysbeyond_tab":                       "Journey's Beyond",
+
+  "item.journeysbeyond.ancient_coin":                     "Ancient Coin",
+  "item.journeysbeyond.ancient_prism":                    "Ancient Prism",
+  "item.journeysbeyond.charged_ancient_prism":            "Charged Ancient Prism",
+  "item.journeysbeyond.nether_ruby":                      "Nether Ruby",
+  "item.journeysbeyond.dormant_ruby":                     "Dormant Nether Ruby",
+  "item.journeysbeyond.active_ruby":                      "Active Nether Ruby",
+
+  "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block"
+}

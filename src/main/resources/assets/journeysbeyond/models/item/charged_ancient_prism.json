@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "journeysbeyond:item/charged_ancient_prism"
+  }
+}

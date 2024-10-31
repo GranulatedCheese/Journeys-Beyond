@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "journeysbeyond:block/charged_ancient_prism_block"
+  }
+}

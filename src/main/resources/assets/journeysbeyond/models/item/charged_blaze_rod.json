@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "journeysbeyond:item/charged_blaze_rod",
+    "layer1": "journeysbeyond:item/charged_blaze_rod_layer"
+  }
+}

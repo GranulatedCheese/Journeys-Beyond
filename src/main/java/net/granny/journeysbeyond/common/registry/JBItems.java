@@ -15,5 +15,6 @@ public class JBItems {
     public static final RegistryObject<Item> CHARGED_ANCIENT_PRISM = ITEMS.register("charged_ancient_prism", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> NETHER_RUBY = ITEMS.register("nether_ruby", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> DORMANT_RUBY = ITEMS.register("dormant_ruby", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
-    public static final RegistryObject<Item> ACTIVE_RUBY = ITEMS.register("active_ruby", () -> new ActiveNetherRuby(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).durability(3600)));
+    public static final RegistryObject<Item> ACTIVE_RUBY = ITEMS.register("active_ruby", () -> new ActiveNetherRuby(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> CHARGED_BLAZE_ROD = ITEMS.register("charged_blaze_rod", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class ActiveNetherRuby extends Item {
 
@@ -42,7 +43,7 @@ public class ActiveNetherRuby extends Item {
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlot, boolean pIsSelected) {
         if(pStack.getOrCreateTag().getBoolean("ruby_enabled") && pEntity instanceof ServerPlayer) {
             // Duration is per tick, i.e. 20 ticks = 1 sec // Amplifier starts from 0, each inc is 2 hearts
-                ((ServerPlayer) pEntity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 40, 4));
+            ((ServerPlayer) pEntity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 40, 4));
         }
     }
 }

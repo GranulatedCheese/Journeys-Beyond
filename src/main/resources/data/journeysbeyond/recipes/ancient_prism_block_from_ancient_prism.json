@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "journeysbeyond:ancient_prism"
+    }
+  },
+  "result": {
+    "item": "journeysbeyond:ancient_prism_block"
+  }
+}

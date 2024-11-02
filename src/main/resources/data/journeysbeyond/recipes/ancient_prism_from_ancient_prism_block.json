@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "journeysbeyond:ancient_prism_block"
+    }
+  ],
+  "result": {
+    "item": "journeysbeyond:ancient_prism",
+    "count": 9
+  }
+}

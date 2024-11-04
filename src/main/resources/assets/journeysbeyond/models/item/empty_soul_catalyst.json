@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "journeysbeyond:item/empty_soul_catalyst",
+    "layer1": "journeysbeyond:item/empty_soul_catalyst_layer"
+  }
+}

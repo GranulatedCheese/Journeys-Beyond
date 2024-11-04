@@ -3,6 +3,7 @@ package net.granny.journeysbeyond;
 import com.mojang.logging.LogUtils;
 import net.granny.journeysbeyond.common.registry.JBItems;
 import net.granny.journeysbeyond.manager.JBModManager;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,6 +17,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.util.Locale;
+
 @Mod(JourneysBeyond.MOD_ID)
 public class JourneysBeyond {
     public static final String MOD_ID = "journeysbeyond";
@@ -26,5 +29,9 @@ public class JourneysBeyond {
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         if (modEventBus != null && forgeEventBus != null) JBModManager.registerAll(modEventBus, forgeEventBus);
+    }
+
+    public static ResourceLocation prefix(String path) {
+        return new ResourceLocation(MOD_ID, path.toLowerCase(Locale.ROOT));
     }
 }

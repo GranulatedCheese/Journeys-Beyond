@@ -8,6 +8,9 @@
   "item.journeysbeyond.dormant_ruby":                     "Dormant Nether Ruby",
   "item.journeysbeyond.active_ruby":                      "Active Nether Ruby",
   "item.journeysbeyond.charged_blaze_rod":                "Charged Blaze Rod",
+  "item.journeysbeyond.empty_soul_catalyst":              "Empty Soul Catalyst",
+
+  "item.journeysbeyond.soulless_greed_sword":             "Soulless Great Sword",
 
   "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block"
 }

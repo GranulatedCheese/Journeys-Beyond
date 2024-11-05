@@ -7,4 +7,6 @@ public class SkilledSwordItem extends SwordItem {
     public SkilledSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
     }
+
+
 }

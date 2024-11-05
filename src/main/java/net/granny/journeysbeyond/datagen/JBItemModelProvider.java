@@ -1,4 +1,4 @@
-package net.granny.journeysbeyond.common.datagen;
+package net.granny.journeysbeyond.datagen;
 
 import net.granny.journeysbeyond.JourneysBeyond;
 import net.granny.journeysbeyond.common.registry.JBItems;

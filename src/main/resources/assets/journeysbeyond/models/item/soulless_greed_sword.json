@@ -1,5 +1,5 @@
 {
-  "parent": "journeybeyond:item/template_claymore",
+  "parent": "journeysbeyond:item/template_claymore",
   "textures": {
     "layer0": "journeysbeyond:item/soulless_greed_sword"
   }

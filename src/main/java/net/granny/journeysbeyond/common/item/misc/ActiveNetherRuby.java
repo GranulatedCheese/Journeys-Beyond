@@ -1,25 +1,24 @@
 package net.granny.journeysbeyond.common.item.misc;
 
-import net.granny.journeysbeyond.common.config.JBCommonClient;
+import net.granny.journeysbeyond.manager.JBConfigManager;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
 public class ActiveNetherRuby extends Item {
 
-    public ActiveNetherRuby(Item.Properties pProperties) {
-        super(pProperties);
+    public ActiveNetherRuby() {
+        super(new Properties().stacksTo(1).rarity(Rarity.COMMON).durability(96));
     }
 
     public ItemStack getDefaultInstance() { return PotionUtils.setPotion(super.getDefaultInstance(), Potions.STRONG_REGENERATION); }
@@ -43,10 +42,8 @@ public class ActiveNetherRuby extends Item {
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlot, boolean pIsSelected) {
         if(pStack.getOrCreateTag().getBoolean("ruby_enabled") && pEntity instanceof ServerPlayer) {
             // Duration is per tick, i.e. 20 ticks = 1 sec // Amplifier starts from 0, each inc is 2 hearts
-            ((ServerPlayer) pEntity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 40, 4));
-            if(!pStack.hurt(0, pLevel.getRandom(), (ServerPlayer) pEntity)) {
-                pStack.hurt(1, pLevel.getRandom(), (ServerPlayer) pEntity);
-            } else {
+            rubyProtection((ServerPlayer) pEntity, pStack, pLevel);
+            if(pStack.hurt(0, pLevel.getRandom(), (ServerPlayer) pEntity)) {
                 pStack.removeTagKey("ruby_enabled");
             }
         } else if(!pStack.getOrCreateTag().getBoolean("ruby_enabled") && pEntity instanceof ServerPlayer) {
@@ -54,10 +51,22 @@ public class ActiveNetherRuby extends Item {
         }
     }
 
-    public void repairRuby(ServerPlayer player, ItemStack stack) {
-        if(stack != null && player.totalExperience > 3) {
-                player.giveExperiencePoints(-3);
-                stack.setDamageValue((stack.getDamageValue() - 10));
+    public static void rubyProtection(ServerPlayer pPlayer, ItemStack pStack, Level pLevel){
+        float playerMaxHealth = pPlayer.getMaxHealth();
+        float playerCurrentHealth = pPlayer.getHealth();
+        float playerHealthDifference = playerMaxHealth - playerCurrentHealth;
+
+        // Item Durability goes negative
+        if(playerCurrentHealth < playerMaxHealth && !pStack.hurt((int)(playerHealthDifference) / 2, pLevel.getRandom(), pPlayer)) {
+            pPlayer.setHealth(playerMaxHealth);
+            pStack.hurt((int)(playerHealthDifference) / 2, pLevel.getRandom(), pPlayer);
+        }
+    }
+
+    public void repairRuby(ServerPlayer pPlayer, ItemStack pStack) {
+        if(pStack != null && pPlayer.totalExperience > 3) {
+            pPlayer.giveExperiencePoints(-3);
+            pStack.setDamageValue((pStack.getDamageValue() - 10));
         }
     }
 }

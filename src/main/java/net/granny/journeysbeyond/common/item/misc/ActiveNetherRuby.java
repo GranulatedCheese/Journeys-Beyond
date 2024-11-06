@@ -1,6 +1,5 @@
 package net.granny.journeysbeyond.common.item.misc;
 
-import net.granny.journeysbeyond.manager.JBConfigManager;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,16 +20,19 @@ public class ActiveNetherRuby extends Item {
         super(new Properties().stacksTo(1).rarity(Rarity.COMMON).durability(96));
     }
 
+    public String rubyKey = "ruby_enabled";
+
     public ItemStack getDefaultInstance() { return PotionUtils.setPotion(super.getDefaultInstance(), Potions.STRONG_REGENERATION); }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if(!pLevel.isClientSide) {
-            if(!itemstack.getTag().getBoolean("ruby_enabled") && (!itemstack.hurt(0, pLevel.getRandom(), (ServerPlayer) pPlayer) || !itemstack.isDamaged())) {
-                itemstack.getOrCreateTag().putBoolean("ruby_enabled", !itemstack.getTag().getBoolean("ruby_enabled"));
+
+            if(!itemstack.getTag().getBoolean(rubyKey) && (!itemstack.hurt(0, pLevel.getRandom(), (ServerPlayer) pPlayer) || !itemstack.isDamaged())) {
+                itemstack.getOrCreateTag().putBoolean(rubyKey, !itemstack.getTag().getBoolean(rubyKey));
             } else {
-                itemstack.removeTagKey("ruby_enabled");
+                itemstack.removeTagKey(rubyKey);
                 return InteractionResultHolder.fail(itemstack);
             }
         }
@@ -40,13 +42,13 @@ public class ActiveNetherRuby extends Item {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlot, boolean pIsSelected) {
-        if(pStack.getOrCreateTag().getBoolean("ruby_enabled") && pEntity instanceof ServerPlayer) {
+        if(pStack.getOrCreateTag().getBoolean(rubyKey) && pEntity instanceof ServerPlayer) {
             // Duration is per tick, i.e. 20 ticks = 1 sec // Amplifier starts from 0, each inc is 2 hearts
             rubyProtection((ServerPlayer) pEntity, pStack, pLevel);
             if(pStack.hurt(0, pLevel.getRandom(), (ServerPlayer) pEntity)) {
-                pStack.removeTagKey("ruby_enabled");
+                pStack.removeTagKey(rubyKey);
             }
-        } else if(!pStack.getOrCreateTag().getBoolean("ruby_enabled") && pEntity instanceof ServerPlayer) {
+        } else if(!pStack.getOrCreateTag().getBoolean(rubyKey) && pEntity instanceof ServerPlayer) {
                 repairRuby((ServerPlayer) pEntity, pStack);
         }
     }

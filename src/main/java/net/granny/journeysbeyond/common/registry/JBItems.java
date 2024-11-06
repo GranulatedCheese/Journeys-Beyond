@@ -21,5 +21,5 @@ public class JBItems {
     public static final RegistryObject<Item> ACTIVE_RUBY = ITEMS.register("active_ruby", ActiveNetherRuby::new);
 
     public static final RegistryObject<Item> SOULLESS_GREED_SWORD = ITEMS.register("soulless_greed_sword",
-            () -> new SoullessGreedSwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).fireResistant().rarity(Rarity.UNCOMMON)));
+            () -> new SoullessGreedSwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).fireResistant().rarity(Rarity.COMMON)));
 }

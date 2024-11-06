@@ -1,5 +1,7 @@
 package net.granny.journeysbeyond.common.item.misc;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -10,14 +12,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class ActiveNetherRuby extends Item {
 
     public ActiveNetherRuby() {
-        super(new Properties().stacksTo(1).rarity(Rarity.COMMON).durability(96));
+        super(new Properties().stacksTo(1).rarity(Rarity.COMMON).durability(48));
     }
 
     public String rubyKey = "ruby_enabled";
@@ -28,7 +34,6 @@ public class ActiveNetherRuby extends Item {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if(!pLevel.isClientSide) {
-
             if(!itemstack.getTag().getBoolean(rubyKey) && (!itemstack.hurt(0, pLevel.getRandom(), (ServerPlayer) pPlayer) || !itemstack.isDamaged())) {
                 itemstack.getOrCreateTag().putBoolean(rubyKey, !itemstack.getTag().getBoolean(rubyKey));
             } else {
@@ -53,6 +58,17 @@ public class ActiveNetherRuby extends Item {
         }
     }
 
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pTooltipComponents.add(Component.translatable("tooltip.journeysbeyond.active_ruby.tooltip").withStyle(ChatFormatting.GRAY));
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        return pStack.getOrCreateTag().getBoolean(rubyKey);
+    }
+
     public static void rubyProtection(ServerPlayer pPlayer, ItemStack pStack, Level pLevel){
         float playerMaxHealth = pPlayer.getMaxHealth();
         float playerCurrentHealth = pPlayer.getHealth();
@@ -66,9 +82,10 @@ public class ActiveNetherRuby extends Item {
     }
 
     public void repairRuby(ServerPlayer pPlayer, ItemStack pStack) {
-        if(pStack != null && pPlayer.totalExperience > 3) {
-            pPlayer.giveExperiencePoints(-3);
-            pStack.setDamageValue((pStack.getDamageValue() - 10));
+        int randomVal = 1 + (int)(Math.random() * ((6 - 1) + 1)); // [1, 6]
+        if(pStack != null && pPlayer.totalExperience > randomVal) {
+            pPlayer.giveExperiencePoints(randomVal * -1);
+            pStack.setDamageValue((pStack.getDamageValue() - randomVal));
         }
     }
 }

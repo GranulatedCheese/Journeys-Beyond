@@ -12,5 +12,6 @@
 
   "item.journeysbeyond.soulless_greed_sword":             "Soulless Great Sword",
 
-  "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block"
+  "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block",
+  "tooltip.journeysbeyond.active_ruby.tooltip":           "Upon use, gives player damage protection.\nTo refill durability, collect XP."
 }

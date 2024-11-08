@@ -49,7 +49,6 @@ public class ActiveNetherRuby extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlot, boolean pIsSelected) {
         if(pStack.getOrCreateTag().getBoolean(rubyKey) && pEntity instanceof ServerPlayer) {
-            // Duration is per tick, i.e. 20 ticks = 1 sec // Amplifier starts from 0, each inc is 2 hearts
             rubyProtection((ServerPlayer) pEntity, pStack, pLevel);
             if(pStack.hurt(0, pLevel.getRandom(), (ServerPlayer) pEntity)) {
                 pStack.removeTagKey(rubyKey);
@@ -61,7 +60,7 @@ public class ActiveNetherRuby extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.journeysbeyond.active_ruby.tooltip").withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(Component.translatable("tooltip.journeysbeyond.active_ruby.tooltip").withStyle(ChatFormatting.DARK_GRAY));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 

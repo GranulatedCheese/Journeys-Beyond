@@ -2,7 +2,7 @@ package net.granny.journeysbeyond.common.registry;
 
 import net.granny.journeysbeyond.JourneysBeyond;
 import net.granny.journeysbeyond.common.item.misc.ActiveNetherRuby;
-import net.granny.journeysbeyond.common.item.weapons.SoullessGreedSwordItem;
+import net.granny.journeysbeyond.common.item.weapons.AvariceSwordItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -20,6 +20,9 @@ public class JBItems {
     public static final RegistryObject<Item> EMPTY_SOUL_CATALYST = ITEMS.register("empty_soul_catalyst", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> ACTIVE_RUBY = ITEMS.register("active_ruby", ActiveNetherRuby::new);
 
+    // --- WEAPONS ---//
     public static final RegistryObject<Item> SOULLESS_GREED_SWORD = ITEMS.register("soulless_greed_sword",
-            () -> new SoullessGreedSwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).fireResistant().rarity(Rarity.COMMON)));
+            () -> new SwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> AVARICE_SWORD = ITEMS.register("avarice_sword",
+            () -> new AvariceSwordItem(JBItemTiers.HALF_POWER, 12, 1.5F - 4, (new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON))));
 }

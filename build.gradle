@@ -71,23 +71,41 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    // Geckolib
     maven {
         name = "Geckolib Maven"
         url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
     }
+    // Player Animator
     maven {
         name = "KosmX Maven"
         url = "https://maven.kosmx.dev/"
     }
+    // Cloth Config
+    maven {
+        name = "Shedaniel Maven"
+        url = "https://maven.shedaniel.me/" }
+    // Modrinth
+    maven {
+        name = "Modrinth"
+        url 'https://api.modrinth.com/maven' }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     // REQ
+    // GeckoLib
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     implementation("com.eliotlash.mclib:mclib:20")
+
+    // Integrations
+    // Player Animator
     implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+    // Cloth Config
+    implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
+    // Better Combat
+    implementation fg.deobf('maven.modrinth:better-combat:1.8.6+1.20.1-forge')
 }
 
 

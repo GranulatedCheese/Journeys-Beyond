@@ -1,0 +1,7 @@
+{
+  "parent": "journeysbeyond:item/template_claymore",
+  "textures": {
+    "layer0": "journeysbeyond:item/soulless_greed_sword",
+    "layer1": "journeysbeyond:item/avarice_sword_layer"
+  }
+}

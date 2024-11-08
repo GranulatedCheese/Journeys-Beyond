@@ -11,7 +11,8 @@
   "item.journeysbeyond.empty_soul_catalyst":              "Empty Soul Catalyst",
 
   "item.journeysbeyond.soulless_greed_sword":             "Soulless Great Sword",
-
+  "item.journeysbeyond.avarice_sword":                    "Avarice Great Sword",
   "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block",
+
   "tooltip.journeysbeyond.active_ruby.tooltip":           "Upon use, gives player damage protection.\nTo refill durability, collect XP."
 }

@@ -36,6 +36,7 @@ public class ActiveNetherRuby extends Item {
         if(!pLevel.isClientSide) {
             if(!itemstack.getTag().getBoolean(rubyKey) && (!itemstack.hurt(0, pLevel.getRandom(), (ServerPlayer) pPlayer) || !itemstack.isDamaged())) {
                 itemstack.getOrCreateTag().putBoolean(rubyKey, !itemstack.getTag().getBoolean(rubyKey));
+                pPlayer.getCooldowns().addCooldown(this, 20);
             } else {
                 itemstack.removeTagKey(rubyKey);
                 return InteractionResultHolder.fail(itemstack);

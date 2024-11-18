@@ -13,27 +13,24 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
 public class AvariceSwordItem extends SkilledSwordItem {
-    public static Tier itemTierLevel;
-
     public AvariceSwordItem(Tier pTier, int pAttackDamageMod, float pAttackSpeedMod, Item.Properties pProperties) {
         super(pTier, pAttackDamageMod, pAttackSpeedMod, pProperties);
-        itemTierLevel = this.getTier();
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
 
-        // Shifting has priority over sprinting
-        if(isShifting(pPlayer)) {
+        if (isShifting(pPlayer)) {
             pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 0.7F);
             return InteractionResultHolder.success(itemstack);
-        } else if(isSprinting(pPlayer)) {
+        } else if (!onGround(pPlayer)) {
+            pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 1.0F);
+            return InteractionResultHolder.success(itemstack);
+        } else if (isSprinting(pPlayer)) {
             pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 1.2F);
             return InteractionResultHolder.success(itemstack);
         } else {
@@ -41,6 +38,8 @@ public class AvariceSwordItem extends SkilledSwordItem {
             return InteractionResultHolder.success(itemstack);
         }
     }
+
+
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {

@@ -1,6 +1,7 @@
 package net.granny.journeysbeyond.common.registry;
 
 import net.granny.journeysbeyond.JourneysBeyond;
+import net.granny.journeysbeyond.common.item.base.SkilledSwordItem;
 import net.granny.journeysbeyond.common.item.misc.ActiveNetherRuby;
 import net.granny.journeysbeyond.common.item.weapons.AvariceSwordItem;
 import net.minecraft.world.item.*;
@@ -22,7 +23,8 @@ public class JBItems {
 
     // --- WEAPONS ---//
     public static final RegistryObject<Item> SOULLESS_GREED_SWORD = ITEMS.register("soulless_greed_sword",
-            () -> new SwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).rarity(Rarity.COMMON)));
+            () -> new SkilledSwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).rarity(Rarity.COMMON)) {
+            });
     public static final RegistryObject<Item> AVARICE_SWORD = ITEMS.register("avarice_sword",
             () -> new AvariceSwordItem(JBItemTiers.HALF_POWER, 12, 1.5F - 4, (new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON))));
 }

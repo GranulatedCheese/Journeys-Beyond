@@ -18,18 +18,23 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
 public class AvariceSwordItem extends SkilledSwordItem {
+    public static Tier itemTierLevel;
+
     public AvariceSwordItem(Tier pTier, int pAttackDamageMod, float pAttackSpeedMod, Item.Properties pProperties) {
         super(pTier, pAttackDamageMod, pAttackSpeedMod, pProperties);
+        itemTierLevel = this.getTier();
     }
-
-    private static int stepMod = 0;
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
 
+        // Shifting has priority over sprinting
         if(isShifting(pPlayer)) {
             pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 0.7F);
+            return InteractionResultHolder.success(itemstack);
+        } else if(isSprinting(pPlayer)) {
+            pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 1.2F);
             return InteractionResultHolder.success(itemstack);
         } else {
             pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 0.3F);

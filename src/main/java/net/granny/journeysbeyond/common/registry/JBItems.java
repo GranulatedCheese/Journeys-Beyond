@@ -23,7 +23,7 @@ public class JBItems {
 
     // --- WEAPONS ---//
     public static final RegistryObject<Item> SOULLESS_GREED_SWORD = ITEMS.register("soulless_greed_sword",
-            () -> new SkilledSwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).rarity(Rarity.COMMON)) {
+            () -> new SwordItem(JBItemTiers.SOULLESS, 7, 1.5F - 4, (new Item.Properties()).rarity(Rarity.COMMON)) {
             });
     public static final RegistryObject<Item> AVARICE_SWORD = ITEMS.register("avarice_sword",
             () -> new AvariceSwordItem(JBItemTiers.HALF_POWER, 12, 1.5F - 4, (new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON))));

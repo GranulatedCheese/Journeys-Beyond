@@ -18,5 +18,41 @@ public abstract class WeaponAttackInstance implements JBWeaponUtil {
         this.heldDuration = heldDuration;
     }
 
+    public abstract int getCooldown();
+
+    public abstract int getAttackStopTime();
+
+    public abstract boolean getCondition();
+
+    public void startUsing() {
+    }
+
     public abstract void tickAttack();
+
+    public abstract void stopUsing();
+
+    public void baseStart() {
+        startUsing();
+    }
+
+    public void baseStop() {
+        stopUsing();
+        player.stopUsingItem();
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public ItemStack getStack() {
+        return stack;
+    }
+
+    public int getHeldDuration() {
+        return heldDuration;
+    }
 }

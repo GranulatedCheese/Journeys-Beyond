@@ -8,6 +8,4 @@ public abstract class AvariceAttack extends WeaponAttackInstance {
     public AvariceAttack(Player player, ItemStack stack, int heldDuration) {
         super(player, stack, heldDuration);
     }
-
-
 }

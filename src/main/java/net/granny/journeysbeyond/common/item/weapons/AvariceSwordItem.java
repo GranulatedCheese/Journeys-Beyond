@@ -1,5 +1,8 @@
 package net.granny.journeysbeyond.common.item.weapons;
 
+import com.google.common.collect.ImmutableList;
+import net.granny.journeysbeyond.common.attack.Avarice.AvariceWideAttack;
+import net.granny.journeysbeyond.common.attack.WeaponAttackInstance;
 import net.granny.journeysbeyond.common.item.base.SkilledSwordItem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -21,25 +24,11 @@ public class AvariceSwordItem extends SkilledSwordItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-
-        if (isShifting(pPlayer)) {
-            pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 0.7F);
-            return InteractionResultHolder.success(itemstack);
-        } else if (!onGround(pPlayer)) {
-            pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 1.0F);
-            return InteractionResultHolder.success(itemstack);
-        } else if (isSprinting(pPlayer)) {
-            pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 1.2F);
-            return InteractionResultHolder.success(itemstack);
-        } else {
-            pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1, 0.3F);
-            return InteractionResultHolder.success(itemstack);
-        }
+    public ImmutableList<WeaponAttackInstance> getPossibleAttacks(Player player, ItemStack stack, int useDuration) {
+        return ImmutableList.of(
+                new AvariceWideAttack(player, stack, useDuration)
+        );
     }
-
-
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {

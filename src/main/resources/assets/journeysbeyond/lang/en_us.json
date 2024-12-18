@@ -1,18 +1,23 @@
 {
   "creativetab.journeysbeyond_tab":                       "Journey's Beyond",
 
+  "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block",
+
   "item.journeysbeyond.ancient_coin":                     "Ancient Coin",
   "item.journeysbeyond.ancient_prism":                    "Ancient Prism",
   "item.journeysbeyond.charged_ancient_prism":            "Charged Ancient Prism",
-  "item.journeysbeyond.nether_ruby":                      "Nether Ruby",
+  "item.journeysbeyond.rough_ruby":                       "Rough Ruby",
   "item.journeysbeyond.dormant_ruby":                     "Dormant Nether Ruby",
   "item.journeysbeyond.active_ruby":                      "Active Nether Ruby",
   "item.journeysbeyond.charged_blaze_rod":                "Charged Blaze Rod",
   "item.journeysbeyond.empty_soul_catalyst":              "Empty Soul Catalyst",
+  "item.journeysbeyond.conjurers_stone":                  "Conjurer's Stone",
+  "item.journeysbeyond.praxi_shard":                      "Praxi Shard",
 
   "item.journeysbeyond.soulless_greed_sword":             "Soulless Great Sword",
   "item.journeysbeyond.avarice_sword":                    "Avarice Great Sword",
-  "block.journeysbeyond.ancient_prism_block":             "Ancient Prism Block",
+  "item.journeysbeyond.praxi_spear":                      "Praxi Spear",
+
 
   "tooltip.journeysbeyond.active_ruby.tooltip":           "Upon use, gives player damage protection.\nTo refill durability, collect XP."
 }

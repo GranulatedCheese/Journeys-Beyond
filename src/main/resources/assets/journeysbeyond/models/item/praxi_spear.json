@@ -1,0 +1,6 @@
+{
+  "parent": "journeysbeyond:item/template_big_handheld",
+  "textures": {
+    "layer0": "journeysbeyond:item/praxi_spear"
+  }
+}
